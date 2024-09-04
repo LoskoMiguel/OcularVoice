@@ -71,5 +71,5 @@ def traduccion():
         return render_template('traduccion_ingles.html', original=pasar_texto, traducido=traducido)
     return render_template('traduccion_ingles.html', original="", traducido="")
 
-if __name__ == "__main__":
-    app.run(debug=False)
+# if __name__ == "__main__":
+#     uvicorn.run()
