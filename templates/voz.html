@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen a Voz</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo_pagina.png') }}" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('{{ url_for('static', filename='images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg') }}') no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 100px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+            color: white;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/logo_pagina.png') }}" alt="Logo" class="logo">
+        </a>
+    </header>
+    <h1>Imagen a Voz</h1>
+    <div class="container">
+        <form action="{{ url_for('voz') }}" method="post" enctype="multipart/form-data">
+            <label for="entrada_voz">Selecciona una imagen:</label>
+            <input type="file" id="entrada_voz" name="entrada_voz" accept="image/*">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

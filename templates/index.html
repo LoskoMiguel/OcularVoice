@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OcularVoice</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo_pagina.png') }}" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('{{ url_for('static', filename='images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg') }}') no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 100px;
+            margin-left: 50px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 16px;
+            margin-top: 80px; /* Adjusted to account for the fixed header */
+        }
+
+        .card {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            background: var(--i);
+            background-size: cover;
+            box-shadow: 3px 5px 5px rgba(3, 32, 51, 0.8);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: 0.5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+        }
+
+        .content h2, a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 10px 0;
+        }
+
+        .card:hover .content {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                height: 80px;
+                margin-left: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 0 8px;
+                margin-top: 60px;
+            }
+
+            .card {
+                height: 200px;
+            }
+
+            .content h2, a {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/logo_pagina.png') }}" alt="Logo" class="logo">
+        </a>
+    </header>
+
+    <h1>Bienvenido a OcularVoice</h1>
+    <div class="container">
+        <div class="card" style="--i:url('{{ url_for('static', filename='images/lupa.jpg') }}')">
+            <div class="content">
+                <h2>Texto</h2>
+                <a href="{{ url_for('texto') }}">Ver detalles</a>
+            </div>
+        </div> 
+
+        <div class="card" style="--i:url('{{ url_for('static', filename='images/microfono.jpg') }}')">
+            <div class="content">
+                <h2>Voz</h2>
+                <a href="{{ url_for('voz') }}">Ver detalles</a>
+            </div>
+        </div>
+
+        <div class="card" style="--i:url('{{ url_for('static', filename='images/dos.jpg') }}')">
+            <div class="content">
+                <h2>Texto y Voz</h2>
+                <a href="{{ url_for('texto_voz') }}">Ver detalles</a>
+            </div>
+        </div>
+
+        <div class="card" style="--i:url('{{ url_for('static', filename='images/bandera.jpg') }}')">
+            <div class="content">
+                <h2>Traducción</h2>
+                <a href="{{ url_for('traduccion') }}">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
